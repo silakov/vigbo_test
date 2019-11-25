@@ -33,6 +33,54 @@ body {
   display: block;
 }
 
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__drop {
+  display: none;
+}
+
+.search {
+  display: inline-flex;
+  position: relative;
+  order: 1;
+}
+
+.search__label {
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.search__label svg {
+  display: block;
+}
+
+.search__input {
+  width: 0;
+  padding: 0 0 0 30px;
+  margin-left: -31px;
+  line-height: 30px;
+  height: 30px;
+  border: 1px solid transparent;
+  transition: width .3s linear, border-color .3s, padding .3s linear;
+}
+
+.search:hover .search__input,
+.search__input:focus {
+  width: 200px;
+  padding: 0 10px 0 30px;
+  border-color: #000;
+}
+
 .main {
   flex: 1 0 auto;
   display: flex;
