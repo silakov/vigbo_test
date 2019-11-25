@@ -1,0 +1,29 @@
+{
+  "name": "vigbo_test",
+  "version": "1.0.0",
+  "description": "here will be specification",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-pug": "^4.0.1",
+    "gulp-rimraf": "^1.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "node-sass": "^4.13.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silakov/vigbo_test.git"
+  },
+  "author": "Igor Silakov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/silakov/vigbo_test/issues"
+  },
+  "homepage": "https://github.com/silakov/vigbo_test#readme"
+}
