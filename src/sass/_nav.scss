@@ -1,32 +1,140 @@
 .nav {
   order: 3;
+  width: 100%;
+  text-align: center;
 
   @media only screen and (min-width: $mobile-width) {
     order: 1;
+    width: auto;
+    text-align: left;
+  }
+}
+
+.nav-link {
+  color: #000;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: #ccc;
   }
 
-  &__list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  @media only screen and (min-width: $mobile-width) {
+    font-size: 9px;
+  }
+}
+
+.nav-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: $mobile-width) {
+    &--bruno {
+      flex-direction: row;
+    }
+  }
+
+  &__item {
     display: flex;
     flex-direction: column;
+    padding: 5px 0;
+    position: relative;
+
+    &:hover .nav-drop {
+      display: block;
+    }
 
     @media only screen and (min-width: $mobile-width) {
-      &--bruno {
-        flex-direction: row;
+      .nav-list--bruno & {
+        padding: 0 10px;
+      }
+      .nav-list--levi & {
+        padding: 0;
       }
     }
 
-    &-link {
-      color: #000;
-      font-size: 9px;
-      text-transform: uppercase;
-      text-decoration: none;
+    @media only screen and (min-width: $desktop-width) {
+      .nav-list--bruno & {
+        padding: 0 25px;
+      }
     }
   }
 
-  &__drop {
-    display: none;
+  &__link {
+    padding: 13px 0;
+    order: 1;
+
+    .nav-drop + & {
+      pointer-events: none;
+
+      @media only screen and (min-width: $mobile-width) {
+        pointer-events: initial;
+      }
+    }
+  }
+}
+
+.nav-drop {
+  display: none;
+  margin: 0;
+  padding: 40px 0 17px;
+  list-style: none;
+  order: 2;
+
+  @media only screen and (min-width: $mobile-width) {
+    padding: 0;
+
+    &--bruno {
+      position: absolute;
+      left: 0;
+      width: 120px;
+      top: 100%;
+    }
+
+    &--levi {
+      padding-bottom: 16px;
+    }
+  }
+
+  @media only screen and (min-width: $desktop-width) {
+    &--bruno {
+      width: 160px;
+    }
+  }
+
+  &__item {
+    padding: 5px 0;
+
+    @media only screen and (min-width: $mobile-width) {
+      .nav-list--bruno & {
+        padding: 0 10px;
+        background-color: #fff;
+        margin-bottom: 1px;
+      }
+    }
+
+    @media only screen and (min-width: $desktop-width) {
+      .nav-list--bruno & {
+        padding: 0 25px;
+      }
+    }
+  }
+
+  &__link {
+    font-size: 9px;
+    line-height: 10px;
+    padding: 8px 0;
+    display: block;
+
+    @media only screen and (min-width: $mobile-width) {
+      .nav-list--bruno & {
+        padding: 17px 0;
+      }
+    }
   }
 }

@@ -30,6 +30,14 @@
       width: 200px;
       padding: 0 10px 0 30px;
       border-color: #000;
+
+      @media only screen and (min-width: $mobile-width) {
+        width: 150px;
+      }
+
+      @media only screen and (min-width: $desktop-width) {
+        width: 200px;
+      }
     }
   }
 }
