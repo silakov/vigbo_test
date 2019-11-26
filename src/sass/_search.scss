@@ -23,13 +23,13 @@
     line-height: 30px;
     height: 30px;
     border: 1px solid transparent;
-    transition: width .3s linear, border-color .3s, padding .3s linear;
 
     .search:hover &,
     &:focus {
       width: 200px;
       padding: 0 10px 0 30px;
       border-color: #000;
+      transition: width .3s linear, border-color .3s linear, padding .3s linear;
 
       @media only screen and (min-width: $mobile-width) {
         width: 150px;
