@@ -21,6 +21,9 @@ gulp.task('sass', () => {
     .src(src.sass + 'main.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer({
+      cascade: false
+    }))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(dest.css));
 });
@@ -38,4 +41,10 @@ gulp.task('copy-js', () => {
     .pipe(gulp.dest(dest.js));
 });
 
-gulp.task('default', gulp.series(['sass', 'pug', 'copy-js']));
+gulp.task('watch', () => {
+  gulp.watch(src.pug, (done) => gulp.series(['pug'])(done));
+  gulp.watch(src.js, (done) => gulp.series(['copy-js'])(done));
+  gulp.watch(src.sass + '**/*.scss', (done) => gulp.series(['sass'])(done));
+});
+
+gulp.task('default', gulp.series(['sass', 'pug', 'copy-js', 'watch']));

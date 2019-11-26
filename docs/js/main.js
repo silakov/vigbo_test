@@ -25,3 +25,10 @@ const changeLayout = function(mod1, mod2) {
 document.querySelector('.switch-layout').onclick = () => {
   changeLayout('--bruno', '--levi');
 };
+document.querySelector('.mobile-buttons__menu').onclick = () => {
+  changeLayout('--closed-menu', '--opened-menu');
+};
+document.querySelector('.mobile-buttons__search').onclick = () => {
+  changeLayout('--closed-menu', '--opened-menu');
+  document.querySelector('.search__input').focus()
+};
