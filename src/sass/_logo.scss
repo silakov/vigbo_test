@@ -1,0 +1,18 @@
+.logo {
+  margin: 0;
+
+  @media only screen and (min-width: $mobile-width) {
+    &--bruno {
+      margin-right: 20px;
+    }
+
+    &--levi {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__link,
+  &__image {
+    display: block;
+  }
+}

@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  min-height: 78px;
+  min-width: 300px;
+  padding: 0 20px;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+
+  &--bruno {
+    @media only screen and (min-width: $mobile-width) {
+      flex-direction: row;
+    }
+    @media only screen and (min-width: $desctop-width) {
+      padding: 0 60px;
+    }
+  }
+
+  &--levi {
+    @media only screen and (min-width: $mobile-width) {
+      padding: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    @media only screen and (min-width: $desctop-width) {
+      padding: 50px;
+    }
+  }
+
+  &__spacer {
+    display: none;
+    flex: 1 0 auto;
+    min-width: 30px;
+    min-height: 30px;
+    order: 2;
+
+    @media only screen and (min-width: $mobile-width) {
+      display: block;
+    }
+  }
+}

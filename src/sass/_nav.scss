@@ -1,0 +1,32 @@
+.nav {
+  order: 3;
+
+  @media only screen and (min-width: $mobile-width) {
+    order: 1;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+
+    @media only screen and (min-width: $mobile-width) {
+      &--bruno {
+        flex-direction: row;
+      }
+    }
+
+    &-link {
+      color: #000;
+      font-size: 9px;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+  }
+
+  &__drop {
+    display: none;
+  }
+}

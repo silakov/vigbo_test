@@ -1,0 +1,43 @@
+.mobile-holder {
+  display: flex;
+  flex: 1 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  background: #fff;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+
+  &--closed-menu {
+    display: none;
+  }
+  &--opened-menu {
+    display: flex;
+  }
+
+  @media only screen and (min-width: $mobile-width) {
+    display: flex;
+    position: static;
+    padding: 0;
+  
+    &--bruno {
+      flex-direction: row;
+    }
+  
+    &--levi {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}
+
+.mobile-buttons {
+  display: block;
+  margin-left: auto;
+  
+  @media only screen and (min-width: $mobile-width) {
+    display: none;
+  }
+}

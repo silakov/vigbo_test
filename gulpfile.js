@@ -3,7 +3,7 @@ const sass            = require('gulp-sass');
 const sourcemaps      = require('gulp-sourcemaps');
 const autoprefixer    = require('gulp-autoprefixer');
 const pug             = require('gulp-pug');
-
+const connect         = require('gulp-connect');
 
 const src = {
   pug: "src/*.pug",
@@ -16,8 +16,8 @@ const dest = {
   js: "docs/js",
 };
 
-gulp.task('sass', () => {
-  return gulp
+function css(cb) {
+  gulp
     .src(src.sass + 'main.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
@@ -25,26 +25,40 @@ gulp.task('sass', () => {
       cascade: false
     }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(dest.css));
-});
+    .pipe(gulp.dest(dest.css))
+    .pipe(connect.reload());
+  cb();
+};
 
-gulp.task('pug', () => {
-  return gulp
+function html(cb) {
+  gulp
     .src(src.pug)
     .pipe(pug({pretty: true}))
-    .pipe(gulp.dest(dest.html));
-});
+    .pipe(gulp.dest(dest.html))
+    .pipe(connect.reload());
+  cb();
+};
 
-gulp.task('copy-js', () => {
-  return gulp
+function js(cb) {
+  gulp
     .src(src.js + 'main.js')
-    .pipe(gulp.dest(dest.js));
-});
+    .pipe(gulp.dest(dest.js))
+    .pipe(connect.reload());
+  cb();
+};
+
+function webServer(cb) {
+  connect.server({
+    root: 'docs',
+    livereload: true
+  });
+  cb();
+};
 
 gulp.task('watch', () => {
-  gulp.watch(src.pug, (done) => gulp.series(['pug'])(done));
-  gulp.watch(src.js, (done) => gulp.series(['copy-js'])(done));
-  gulp.watch(src.sass + '**/*.scss', (done) => gulp.series(['sass'])(done));
+  gulp.watch(src.pug, html);
+  gulp.watch(src.js, js);
+  gulp.watch(src.sass + '**/*.scss', css);
 });
 
-gulp.task('default', gulp.series(['sass', 'pug', 'copy-js', 'watch']));
+gulp.task('default', gulp.series([css, html, js, webServer, 'watch']));

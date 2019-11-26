@@ -1,0 +1,35 @@
+.search {
+  display: inline-flex;
+  position: relative;
+  order: 1;
+
+  @media only screen and (min-width: $mobile-width) {
+    order: 3;
+  }
+
+  &__label {
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  &__input {
+    width: 0;
+    padding: 0 0 0 30px;
+    margin-left: -31px;
+    line-height: 30px;
+    height: 30px;
+    border: 1px solid transparent;
+    transition: width .3s linear, border-color .3s, padding .3s linear;
+
+    .search:hover &,
+    &:focus {
+      width: 200px;
+      padding: 0 10px 0 30px;
+      border-color: #000;
+    }
+  }
+}
