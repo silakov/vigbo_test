@@ -1,27 +1,27 @@
 .logo {
   margin: 0;
 
-  @media only screen and (min-width: $mobile-width) {
-    &--bruno {
+  &--#{$mod-name1} {
+    @media only screen and (min-width: $mobile-width) {
       margin-right: 10px;
-
+  
       svg {
         width: 100px;
       }
     }
 
-    &--levi {
-      margin-bottom: 20px;
-    }
-  }
-
-  @media only screen and (min-width: $desktop-width) {
-    &--bruno {
+    @media only screen and (min-width: $desktop-width) {
       margin-right: 20px;
 
       svg {
         width: auto;
       }
+    }
+  }
+
+  &--#{$mod-name2} {
+    @media only screen and (min-width: $mobile-width) {
+      margin-bottom: 20px;
     }
   }
 

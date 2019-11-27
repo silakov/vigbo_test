@@ -1,5 +1,6 @@
 .search {
-  display: inline-flex;
+  --base-size: 30px;
+  display: flex;
   position: relative;
   order: 1;
 
@@ -8,7 +9,7 @@
   }
 
   &__label {
-    width: 30px;
+    width: var(--base-size);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,16 +19,16 @@
 
   &__input {
     width: 0;
-    padding: 0 0 0 30px;
-    margin-left: -31px;
-    line-height: 30px;
-    height: 30px;
+    padding: 0 0 0 var(--base-size);
+    margin-left: calc(-1px - var(--base-size));
+    line-height: var(--base-size);
+    height: var(--base-size);
     border: 1px solid transparent;
 
     .search:hover &,
     &:focus {
       width: 200px;
-      padding: 0 10px 0 30px;
+      padding: 0 10px 0 var(--base-size);
       border-color: #000;
       transition: width .3s linear, border-color .3s linear, padding .3s linear;
 

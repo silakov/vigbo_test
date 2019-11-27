@@ -9,24 +9,34 @@
   padding: 50px 20px 20px;
   flex-direction: column;
   align-items: center;
+  transition: transform .3s linear, opacity .3s linear;
 
   &--closed-menu {
-    display: none;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transform: translateY(-100%);
   }
   &--opened-menu {
-    display: flex;
+    opacity: 1;
+    height: auto;
+    overflow: hidden;
+    transform: translateY(0);
   }
 
   @media only screen and (min-width: $mobile-width) {
-    display: flex;
     position: static;
     padding: 0;
+    opacity: 1;
+    height: auto;
+    overflow: visible;
+    transform: translateY(0);
   
-    &--bruno {
+    &--#{$mod-name1} {
       flex-direction: row;
     }
   
-    &--levi {
+    &--#{$mod-name2} {
       flex-direction: column;
       align-items: flex-start;
     }
@@ -41,71 +51,60 @@
   @media only screen and (min-width: $mobile-width) {
     display: none;
   }
+}
 
-  &__search {
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    border: 0;
-    margin-right: 10px;
-    display: flex;
-    justify-content: center;
-    background: none;
+.mobile-menu-opener {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
 
-    &--opened-menu {
-      display: none;
-    }
+  svg {
+    pointer-events: none;
   }
 
-  &__menu {
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    border: 0;
-    display: flex;
-    background: none;
+  .line--1,
+  .line--3 {
+    --total-length: 126.64183044433594;
+  }
+  .line--2 {
+    --total-length: 70;
+  }
 
-    path {
-      fill: none;
-      stroke: #000;
-      stroke-width: 3;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      --length: 24;
-      --offset: -38;
-      stroke-dasharray: var(--length) var(--total-length);
-      stroke-dashoffset: var(--offset);
-      transition: all .8s cubic-bezier(.645, .045, .355, 1);
-    }
+  .line--1,
+  .line--2,
+  .line--3 {
+    --length: 24;
+    --offset: -38;
+    fill: none;
+    stroke: #000;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: var(--length) var(--total-length);
+    stroke-dashoffset: var(--offset);
+    transition: all .8s cubic-bezier(.645, .045, .355, 1);
+  }
 
-    &--opened-menu svg {
-      .line--1,
-      .line--3 {
-        --length: 22.627416998;
-      }
-      .line--2 {
-        --length: 0;
-      }
+  &--opened-menu {
+    &:first-child {
+      display: none;
     }
 
     .line--1,
     .line--3 {
-      --total-length: 126.64183044433594;
+      --length: 22.627416998;
+      --offset: -94.1149185097;
     }
     .line--2 {
-      --total-length: 70;
-    }
-
-    &--opened-menu svg {
-      .line--1,
-      .line--3 {
-        --offset: -94.1149185097;
-      }
-      .line--2 {
-        --offset: -50;
-      }
+      --length: 0;
+      --offset: -50;
     }
   }
 }

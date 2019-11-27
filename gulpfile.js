@@ -6,8 +6,8 @@ const pug             = require('gulp-pug');
 const connect         = require('gulp-connect');
 
 const src = {
-  pug: "src/*.pug",
-  sass: "src/sass/",
+  html: "src/",
+  css: "src/sass/",
   js: "src/js/",
 };
 const dest = {
@@ -18,13 +18,13 @@ const dest = {
 
 function css(cb) {
   gulp
-    .src(src.sass + 'main.scss')
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
+    .src(src.css + 'main.scss')
+    // .pipe(sourcemaps.init())
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(autoprefixer({
       cascade: false
     }))
-    .pipe(sourcemaps.write())
+    // .pipe(sourcemaps.write())
     .pipe(gulp.dest(dest.css))
     .pipe(connect.reload());
   cb();
@@ -32,10 +32,13 @@ function css(cb) {
 
 function html(cb) {
   gulp
-    .src(src.pug)
+    .src(src.html + '*.pug')
     .pipe(pug({pretty: true}))
     .pipe(gulp.dest(dest.html))
     .pipe(connect.reload());
+  gulp
+    .src(src.html + 'favicon.ico')
+    .pipe(gulp.dest(dest.html));
   cb();
 };
 
@@ -56,9 +59,9 @@ function webServer(cb) {
 };
 
 gulp.task('watch', () => {
-  gulp.watch(src.pug, html);
+  gulp.watch(src.html, html);
   gulp.watch(src.js, js);
-  gulp.watch(src.sass + '**/*.scss', css);
+  gulp.watch(src.css + '**/*.scss', css);
 });
 
 gulp.task('default', gulp.series([css, html, js, webServer, 'watch']));

@@ -22,13 +22,19 @@ const changeLayout = function(mod1, mod2) {
   })
   switchMod();
 };
+
 document.querySelector('.switch-layout').onclick = () => {
   changeLayout('--bruno', '--levi');
 };
-document.querySelector('.mobile-buttons__menu').onclick = () => {
-  changeLayout('--closed-menu', '--opened-menu');
-};
-document.querySelector('.mobile-buttons__search').onclick = () => {
-  changeLayout('--closed-menu', '--opened-menu');
-  document.querySelector('.search__input').focus()
-};
+
+const buttons = document.querySelectorAll('.mobile-menu-opener');
+for (const button of buttons) {
+  button.addEventListener('click', function(event) {
+    changeLayout('--closed-menu', '--opened-menu');
+    if (event.target === document.querySelector('.mobile-menu-opener:first-child')) {
+      document.querySelector('.search__input').focus();
+    } else {
+      document.querySelector('.nav-list__link').focus();
+    }
+  })
+}

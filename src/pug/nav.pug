@@ -1,0 +1,12 @@
+nav.nav
+  ul.nav-list(class="nav-list--" + mod_name)
+    each item in navLinks
+      li.nav-list__item
+        if item.drop
+          ul.nav-drop(class="nav-drop--" + mod_name)
+            li.nav-drop__item
+              a.nav-link.nav-drop__link(href="#")= item.link
+            each dropItem in item.drop
+              li.nav-drop__item
+                a.nav-link.nav-drop__link(href="#")= dropItem.link
+        a.nav-link.nav-list__link(href="#")= item.link

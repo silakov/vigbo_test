@@ -1,0 +1,11 @@
+header.header(class="header--" + mod_name)
+  include logo.pug
+
+  .mobile-holder.mobile-holder--closed-menu(class="mobile-holder--" + mod_name)
+    include nav.pug
+
+    .header__spacer
+
+    include search.pug
+
+  include mobile.pug
