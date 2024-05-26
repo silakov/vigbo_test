@@ -2,20 +2,20 @@
 -
   navLinks = [
     {
-      link: 'Портфолио',
+      link: 'Portfolio',
       drop: [
-        {link: 'Детали'},
+        {link: 'Details'},
         {link: 'Lifestyle'},
       ]
     },
-    {link: 'Видео'},
-    {link: 'Отзывы'},
-    {link: 'Блог'},
-    {link: 'Контакты'},
+    {link: 'Video'},
+    {link: 'Reviews'},
+    {link: 'Blog'},
+    {link: 'Contacts'},
   ]
 
 doctype html
-html(lang="ru")
+html(lang="en")
   head
     title vigbo test
     meta(charset="UTF-8")
@@ -27,6 +27,6 @@ html(lang="ru")
       include pug/header.pug
 
       main.main
-        button.switch-layout(type='button') change
+        button.switch-layout(type='button') change view
 
     script(src="js/main.js")
